@@ -1,6 +1,7 @@
 // ignore_for_file: unused_field, prefer_final_fields, prefer_const_constructors, empty_statements
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class MyForm extends StatefulWidget {
   const MyForm({super.key});
@@ -34,6 +35,10 @@ class _MyFormState extends State<MyForm> {
             Column(children: [
             TextFormField(
               controller: _ra,
+              keyboardType: TextInputType.number,
+              inputFormatters: <TextInputFormatter>[
+                FilteringTextInputFormatter.digitsOnly
+              ],
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'O RA não pode ser vazio.';
@@ -48,6 +53,7 @@ class _MyFormState extends State<MyForm> {
                ,
             ), TextFormField(
               controller: _nome,
+
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'O nome não pode ser vazio.';
@@ -61,6 +67,7 @@ class _MyFormState extends State<MyForm> {
             ),
             TextFormField(
               controller: _senha,
+              obscureText: true,
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'Por favor, insira uma senha.';

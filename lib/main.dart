@@ -1,4 +1,5 @@
 import 'package:wannakry/formulario.dart';
+import 'package:wannakry/formularioexer.dart';
 import 'package:wannakry/home_page.dart';
 import 'package:flutter/material.dart';
 
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
       routes: 
       {
         '/MyForm': (context) => const MyForm(),
+        '/FormExercise': (context) => const FormExercise(),
       },
       home: const HomePage(),
     );
