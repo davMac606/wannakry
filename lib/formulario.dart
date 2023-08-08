@@ -76,17 +76,22 @@ class _MyFormState extends State<MyForm> {
               },
             ),
             
-          ],)),
+          ],)
+          ),
+       
           ElevatedButton(onPressed: () {
            if (_formKey.currentState!.validate()) {
              ra = int.parse(_ra.text);
             nome = _nome.text;
             senha = _senha.text;
+                void successo() {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Aluno cadastrado com sucesso!')));
+          }
             setState(() {
               _ra.clear();
               _nome.clear();
               _senha.clear();
-            
+            successo();
            });
            };
 
