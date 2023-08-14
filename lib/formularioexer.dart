@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:wannakry/tela.dart';
 
 class FormExercise extends StatefulWidget {
   const FormExercise({super.key});
@@ -21,7 +22,7 @@ class _FormExerciseState extends State<FormExercise> {
   String username = "";
   int idade = 0;
   String senha = "";
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  GlobalKey<FormState> _formKey1 = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,25 +33,31 @@ class _FormExerciseState extends State<FormExercise> {
         child: Column(children: [
         Text("Bem vindo ao RPIC!", style: TextStyle(fontSize: 20),),
         Form(
-          key: _formKey,
+          key: _formKey1,
           child: Column(children: [
             TextFormField(
               controller: _nome,
+
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'O nome não pode ser vazio.';
                 } else {
-                  if (value.length<3) {
-                    return 'O nome deve ter mais de 3 caracteres.';
+                  if (_nome.text.length < 5) {
+                    return 'O nome deve ter mais de 5 caracteres.';
                   }
                 }
                 return null;
-              } 
+              } ,
+              decoration: InputDecoration(
+                labelText: 'Nome',
+                hintText: 'Digite seu Nome',
+                border: OutlineInputBorder(),
+              )
             ),
             TextFormField(
               controller: _email,
               validator: (value) {
-                if (value == null || value.isEmpty) {
+                if (value!.isEmpty) {
                   return 'O email não pode ser vazio.';
                 } else {
                   if (!value.contains('@')) {
@@ -58,12 +65,18 @@ class _FormExerciseState extends State<FormExercise> {
                   }
                 }
                 return null;
-              } 
+              } , 
+              decoration: InputDecoration(
+                labelText: 'E-mail',
+                hintText: 'Digite seu e-mail',
+                border: OutlineInputBorder(),
+              )
+
             ),
             TextFormField(
               controller: _username,
               validator: (value) {
-                if (value == null || value.isEmpty) {
+                if (value!.isEmpty) {
                   return 'O username não pode ser vazio.';
                 } else {
                   if (value.length<3) {
@@ -71,7 +84,12 @@ class _FormExerciseState extends State<FormExercise> {
                   }
                 }
                 return null;
-              } 
+              } , 
+              decoration: InputDecoration(
+                labelText: 'Nome de usuário',
+                hintText: 'Digite seu nome de usuário',
+                border: OutlineInputBorder(),
+              )
             ),
             TextFormField(
               controller: _idade,
@@ -80,7 +98,7 @@ class _FormExerciseState extends State<FormExercise> {
                 FilteringTextInputFormatter.digitsOnly
               ],
               validator: (value) {
-                if (value == null || value.isEmpty) {
+                if (value!.isEmpty) {
                   return 'A idade não pode ser vazia.';
                 } else {
                   if (int.parse(_idade.text)<18) {
@@ -88,13 +106,20 @@ class _FormExerciseState extends State<FormExercise> {
                   }
                 }
                 return null;
-              } 
+              }, 
+              decoration: InputDecoration(
+                labelText: 'Idade',
+                hintText: 'Digite sua idade',
+                border: OutlineInputBorder(),
+              )
+              
+              
             ),
             TextFormField(
               controller: _senha,
               obscureText: true,
               validator: (value) {
-                if (value == null || value.isEmpty) {
+                if (value!.isEmpty) {
                   return 'A senha não pode ser vazia.';
                 } else {
                   if (value.length<6) {
@@ -102,22 +127,31 @@ class _FormExerciseState extends State<FormExercise> {
                   }
                 }
                 return null;
-              } 
+              } , 
+              decoration: InputDecoration(
+                labelText: 'Senha',
+                hintText: 'Crie uma senha',
+                border: OutlineInputBorder(),
+              )
             ),
             ElevatedButton(onPressed: () {
-
+if (_formKey1.currentState!.validate()) {
                    void successo() {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Aluno cadastrado com sucesso!')));
+           
           }
             setState(() {
               _nome.clear();
               _email.clear();
               _username.clear();
+              _idade.clear();
               _senha.clear();
             successo();
+             Navigator.pushNamed(context, '/TelaCadastrada');
             });
+}
             }, child: Text("Cadastrar"))
-          
+  
         ],)
         
         )],),

@@ -48,7 +48,12 @@ class _MyFormState extends State<MyForm> {
                   }
                 }
                 return null;
-              } 
+              },
+              decoration: InputDecoration(
+                labelText: 'RA',
+                hintText: 'Digite seu RA',
+                border: OutlineInputBorder(),
+              )
               
                ,
             ), TextFormField(
@@ -64,6 +69,11 @@ class _MyFormState extends State<MyForm> {
                 }
                 return null;
               },
+              decoration: InputDecoration(
+                labelText: 'Nome',
+                hintText: 'Digite seu nome',
+                border: OutlineInputBorder(),
+              )
             ),
             TextFormField(
               controller: _senha,
@@ -74,6 +84,11 @@ class _MyFormState extends State<MyForm> {
                 }
                 return null;
               },
+              decoration: InputDecoration(
+                labelText: 'Senha',
+                hintText: 'Digite sua senha',
+                border: OutlineInputBorder(),
+              )
             ),
             
           ],)
@@ -83,6 +98,7 @@ class _MyFormState extends State<MyForm> {
            if (_formKey.currentState!.validate()) {
              ra = int.parse(_ra.text);
             nome = _nome.text;
+            
             senha = _senha.text;
                 void successo() {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Aluno cadastrado com sucesso!')));
