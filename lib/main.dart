@@ -6,6 +6,8 @@ import 'package:wannakry/telacadastrada.dart';
 import 'package:wannakry/login.dart';
 
 void main() {
+  print("a");
+
   runApp(const MyApp());
 }
 

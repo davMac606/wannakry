@@ -18,11 +18,9 @@ class _LoginState extends State<Login> {
   @override
   TextEditingController _username = TextEditingController();
   TextEditingController _senha = TextEditingController();
-  UserRepository _userRepository = UserRepository();
   GlobalKey<FormState> formKey1 = GlobalKey<FormState>();
   String username = "";
   String senha = "";
-
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,24 +63,22 @@ class _LoginState extends State<Login> {
                   ),
                   ElevatedButton(
                       onPressed: () {
-                          username = _username.text;
-                                senha = _senha.text;
-                                   User user = User(username, senha);
+                        username = _username.text;
+                        senha = _senha.text;
+                        User user = User(username, senha);
                         if (formKey1.currentState!.validate()) {
-                         
-                          if (_userRepository.login(user)) {
-                            void successo() {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(content: Text('Login efetuado!')));
-                              setState(() {
-                              
-                              });
-                            }
-
-                            successo();
+                          userRepo.printUsers();
+                          if (userRepo.login(user)) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text('Login efetuado!')));
+                            Navigator.pushNamed(context, '/HomePage');
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(content: Text('Login inválido!')));
+                            setState(() {
+                              _username.clear();
+                              _senha.clear();
+                            });
                           }
                         }
                       },
