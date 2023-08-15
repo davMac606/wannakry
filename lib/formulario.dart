@@ -3,14 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class MyForm extends StatefulWidget {
-  const MyForm({super.key});
+class Formulario extends StatefulWidget {
+  const Formulario({super.key});
 
   @override
-  State<MyForm> createState() => _MyFormState();
+  State<Formulario> createState() => FormularioState();
 }
 
-class _MyFormState extends State<MyForm> {
+class FormularioState extends State<Formulario> {
 
   TextEditingController _ra = TextEditingController();
   TextEditingController _nome = TextEditingController();

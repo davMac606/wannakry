@@ -153,8 +153,9 @@ if (_formKey1.currentState!.validate()) {
             successo();
             
             });
+            Navigator.pushNamed(context, '/HomePage');
 }
- Navigator.pushNamed(context, '/TelaCadastro');
+ 
             }, child: Text("Cadastrar"))
   
         ],)

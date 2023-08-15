@@ -1,6 +1,7 @@
-// ignore_for_file: prefer_const_constructors, prefer_final_fields, unused_field, prefer_const_literals_to_create_immutables, unused_import
+// ignore_for_file: prefer_const_constructors, prefer_final_fields, unused_field, prefer_const_literals_to_create_immutables,
 
 import 'package:flutter/material.dart';
+import 'package:wannakry/formulario.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -15,8 +16,9 @@ class HomePage extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
+            Text("Bom dia Tânia!", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
           ElevatedButton(onPressed: () {
-              Navigator.pushNamed(context, '/MyForm');
+              Navigator.pushNamed(context, '/Formulario');
             }, child: Text('Formulário')),
             ElevatedButton(onPressed: () {
               Navigator.pushNamed(context, '/FormExercise');
