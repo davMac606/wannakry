@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 
 class Formulario extends StatefulWidget {
   const Formulario({super.key});
-
+  
   @override
   State<Formulario> createState() => FormularioState();
 }
@@ -23,6 +23,7 @@ class FormularioState extends State<Formulario> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset : false,
       appBar: AppBar(
         title: Text('Formulário'),
       ),

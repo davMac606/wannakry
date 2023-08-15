@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:wannakry/telacadastrada.dart';
+import 'package:wannakry/user.dart';
+import 'package:wannakry/user_repository.dart';
 
 class FormExercise extends StatefulWidget {
   const FormExercise({super.key});
@@ -17,6 +19,7 @@ class _FormExerciseState extends State<FormExercise> {
   TextEditingController _username = TextEditingController();
   TextEditingController _idade = TextEditingController();
   TextEditingController _senha = TextEditingController();
+  UserRepository userRepo = UserRepository();
   String nome = "";
   String email = "";
   String username = "";
@@ -143,17 +146,29 @@ if (_formKey1.currentState!.validate()) {
           }
           
             setState(() {
-              _nome.clear();
-              _email.clear();
-              _username.clear();
-              _idade.clear();
-              _senha.clear();
-              //aaaaaaaaaaaaaa
-              //
+              username = _username.text;
+              nome = _nome.text;
+              email = _email.text;
+              idade = int.parse(_idade.text);
+              senha = _senha.text;
+              User user = User(username, senha);
+              userRepo.addUser(user);
+              setState(() {
+                
+                _username.text = "";
+                _nome.text = "";
+                _email.text = "";
+                _idade.text = "";
+                _senha.text = "";
+              });
+              
             successo();
             
             });
-            Navigator.pushNamed(context, '/HomePage');
+            Navigator.pushNamed(context, '/HomePage', arguments: <String, String>{
+              'username': _username.text,
+              'senha': _senha.text,
+            });
 }
  
             }, child: Text("Cadastrar"))
