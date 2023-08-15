@@ -65,15 +65,17 @@ class _LoginState extends State<Login> {
                   ),
                   ElevatedButton(
                       onPressed: () {
+                          username = _username.text;
+                                senha = _senha.text;
+                                   User user = User(username, senha);
                         if (formKey1.currentState!.validate()) {
-                            User user = User(username, senha);
+                         
                           if (_userRepository.login(user)) {
                             void successo() {
                               ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(content: Text('Login efetuado!')));
                               setState(() {
-                                username = _username.text;
-                                senha = _senha.text;
+                              
                               });
                             }
 
