@@ -1,8 +1,8 @@
-// ignore_for_file: unused_field, prefer_final_fields, prefer_const_constructors, empty_statements
+// ignore_for_file: unused_field, prefer_final_fields, prefer_const_constructors, empty_statements, unused_import
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:wannakry/tela.dart';
+import 'package:wannakry/telacadastrada.dart';
 
 class FormExercise extends StatefulWidget {
   const FormExercise({super.key});
@@ -26,6 +26,7 @@ class _FormExerciseState extends State<FormExercise> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset : false,
       appBar: AppBar(
         title: Text('oi tania!'),
       ),
@@ -140,16 +141,19 @@ if (_formKey1.currentState!.validate()) {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Aluno cadastrado com sucesso!')));
            
           }
+          
             setState(() {
               _nome.clear();
               _email.clear();
               _username.clear();
               _idade.clear();
               _senha.clear();
+              
             successo();
-             Navigator.pushNamed(context, '/TelaCadastrada');
+            
             });
 }
+ Navigator.pushNamed(context, '/TelaCadastro');
             }, child: Text("Cadastrar"))
   
         ],)

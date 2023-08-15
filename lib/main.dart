@@ -2,7 +2,7 @@ import 'package:wannakry/formulario.dart';
 import 'package:wannakry/formularioexer.dart';
 import 'package:wannakry/home_page.dart';
 import 'package:flutter/material.dart';
-import 'package:wannakry/tela.dart';
+import 'package:wannakry/telacadastrada.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       {
         '/MyForm': (context) => const MyForm(),
         '/FormExercise': (context) => const FormExercise(),
-        'TelaCadastrada': (context) => const TelaCadastrada(),
+        'TelaCadastro': (context) => const TelaCadastro(),
       },
       home: const HomePage(),
     );
