@@ -65,7 +65,7 @@ class _LoginState extends State<Login> {
                       onPressed: () {
                         username = _username.text;
                         senha = _senha.text;
-                        User user = User(username, senha);
+                        User user = User.userforlogin(username, senha);
                         if (formKey1.currentState!.validate()) {
                           userRepo.printUsers();
                           if (userRepo.login(user)) {

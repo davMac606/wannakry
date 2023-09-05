@@ -2,11 +2,8 @@ import 'package:wannakry/user.dart';
 
 // ignore_for_file: unused_field, prefer_final_fields, unnecessary_this, avoid_print
 class UserRepository {
-  List<User> _users = [];
+  static List<User> _users = [];
 
-  UserRepository() {
-    this._users = [];
-  }
   void addUser(User user) {
     print("Adding $user");
 
@@ -18,6 +15,10 @@ class UserRepository {
     for (User user in _users) {
       print(user);
     }
+  }
+
+  static List<User> getUsers() {
+    return _users;
   }
 
   bool login(User user) {

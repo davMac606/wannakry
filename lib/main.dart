@@ -2,6 +2,7 @@ import 'package:wannakry/formulario.dart';
 import 'package:wannakry/formularioexer.dart';
 import 'package:flutter/material.dart';
 import 'package:wannakry/home_page.dart';
+import 'package:wannakry/lista.dart';
 import 'package:wannakry/telacadastrada.dart';
 import 'package:wannakry/login.dart';
 
@@ -27,7 +28,8 @@ class MyApp extends StatelessWidget {
         '/Formulario': (context) => const Formulario(),
         '/FormExercise': (context) => const FormExercise(),
         '/Login': (context) => const Login(),
-        'TelaCadastro': (context) => const TelaCadastro(),
+        '/TelaCadastro': (context) => const TelaCadastro(),
+        '/Consulta': (context) => const ListaWanna(),
       },
       home: const FormExercise(),
     );
