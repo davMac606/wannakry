@@ -36,6 +36,8 @@ class _ListaWannaState extends State<ListaWanna> {
                         content: Column(children: [
                           Text(userRepo[index].senha),
                           Text(userRepo[index].nome),
+                          Text(userRepo[index].idade.toString()),
+                          Text(userRepo[index].email),
 
                         ]),
                       );
