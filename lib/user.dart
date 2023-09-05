@@ -8,8 +8,8 @@ class User {
   String? _email;
   int? _idade;
 
-  User(this._nome, this._username, this._senha, this._email, this._idade);
-  User.userforlogin(this._username, this._senha);
+  User(this._username, this._senha);
+  User.usergeral(this._nome, this._username, this._senha, this._email, this._idade);
   get nome => _nome;
   get username => _username;
   get senha => _senha;
