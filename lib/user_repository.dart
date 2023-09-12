@@ -34,4 +34,11 @@ class UserRepository {
   static void removeUser(User user) {
     _users.remove(user);
 }
+  void updateUser(User user, int index) {
+    _users[index].nome = user.nome;
+    _users[index].email = user.email;
+    _users[index].username = user.username;
+    _users[index].idade = user.idade;
+    _users[index].senha = user.senha;
+  }
 }

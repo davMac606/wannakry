@@ -1,7 +1,8 @@
-// ignore_for_file: prefer_const_constructors, override_on_non_overriding_member, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, override_on_non_overriding_member, prefer_const_literals_to_create_immutables, unused_import
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:wannakry/chng.dart';
 import 'package:wannakry/user.dart';
 import 'package:wannakry/user_repository.dart';
 
@@ -45,18 +46,7 @@ class _ListaWannaState extends State<ListaWanna> {
   }
 
   @override
-  TextEditingController _nomeEdit = new TextEditingController();
-  TextEditingController _emailEdit = new TextEditingController();
-  TextEditingController _usernameEdit = TextEditingController();
-  TextEditingController _idadeEdit = TextEditingController();
-  TextEditingController _senhaEdit = TextEditingController();
-  String nomeEdit = "";
-  String emailEdit = "";
-  String usernameEdit = "";
-  int idadeEdit = 0;
-  String senhaEdit = "";
 
-  GlobalKey<FormState> _formKey2 = new GlobalKey<FormState>();
   Widget build(BuildContext context) {
     return Scaffold(
         resizeToAvoidBottomInset: false,
@@ -78,112 +68,9 @@ class _ListaWannaState extends State<ListaWanna> {
                         Expanded(
                             child: IconButton(
                           onPressed: () {
-                            showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return AlertDialog(
-                                    title: Text("Edição de" +
-                                        userRepo[index].username +
-                                        "."),
-                                    content: Form(
-                                      key: _formKey2,
-                                      child: Column(children: [
-                                        TextFormField(
-                                            controller: _nomeEdit,
-                                            validator: (value) {
-                                              if (value == null ||
-                                                  value.isEmpty) {
-                                                return 'O nome não pode ser vazio.';
-                                              } else {
-                                               
-                                              }
-                                              return null;
-                                            },
-                                            decoration: InputDecoration(
-                                              labelText: 'Nome',
-                                              hintText: 'Digite seu Nome',
-                                              border: OutlineInputBorder(),
-                                            )),
-                                        TextFormField(
-                                            controller: _emailEdit,
-                                            validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'O email não pode ser vazio.';
-                            } else {
-                              if (!value.contains('@')) {
-                                return 'O email deve conter @.';
-                              }
-                            }
-                            return null;
-                          },
-                          decoration: InputDecoration(
-                            labelText: 'E-mail',
-                            hintText: 'Digite seu e-mail',
-                            border: OutlineInputBorder(),
-                          )),
-                          TextFormField(
-                          controller: _usernameEdit,
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'O username não pode ser vazio.';
-                            } else {
-                              if (value.length < 3) {
-                                return 'O username deve ter mais de 3 caracteres.';
-                              }
-                            }
-                            return null;
-                          },
-                          decoration: InputDecoration(
-                            labelText: 'Nome de usuário',
-                            hintText: 'Digite seu nome de usuário',
-                            border: OutlineInputBorder(),
-                          )),
-                          TextFormField(
-                           controller: _idadeEdit,
-                          keyboardType: TextInputType.number,
-                          inputFormatters: <TextInputFormatter>[
-                            FilteringTextInputFormatter.digitsOnly
-                          ],
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'A idade não pode ser vazia.';
-                            } else {
-                              if (int.parse(_idadeEdit.text) < 18) {
-                                return 'A idade deve ser maior que 18 anos.';
-                              }
-                            }
-                            return null;
-                          },
-                          decoration: InputDecoration(
-                            labelText: 'Idade',
-                            hintText: 'Digite sua idade',
-                            border: OutlineInputBorder(),
-                          )),
-                           TextFormField(
-                          controller: _senhaEdit,
-                          obscureText: true,
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'A senha não pode ser vazia.';
-                            } else {
-                              if (value.length < 6) {
-                                return 'A senha deve ter mais de 6 caracteres.';
-                              }
-                            }
-                            return null;
-                          },
-                          decoration: InputDecoration(
-                            labelText: 'Senha',
-                            hintText: 'Crie uma senha',
-                            border: OutlineInputBorder(),
-                          )),
-                          ElevatedButton(onPressed: () {
-                            
-                          }, child: Text("Atualizar"))
-                                      ]),
-                                    ),
-                                  );
-                                });
+                            Navigator.push(context, MaterialPageRoute(builder: (context) {
+                              return UserEdit(userRepo[index], index);
+                            }));
                           },
                           icon: Icon(Icons.mode_edit_outline_outlined),
                         )),
