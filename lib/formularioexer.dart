@@ -50,10 +50,7 @@ class _FormExerciseState extends State<FormExercise> {
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'O nome não pode ser vazio.';
-                            } else {
-                              if (_nome.text.length < 5) {
-                                return 'O nome deve ter mais de 5 caracteres.';
-                              }
+                            } else {                         
                             }
                             return null;
                           },

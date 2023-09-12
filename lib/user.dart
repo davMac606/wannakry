@@ -9,7 +9,9 @@ class User {
 
   User(this._username, this._senha);
   User.usergeral(
-      this._nome, this._username, this._senha, this._email, this._idade);
+      this._nome, this._username, this._senha, this._email, this._idade
+      );
+  User.updateuser(this._nome, this._username, this._senha, this._email, this._idade);
   get nome => _nome;
   get username => _username;
   get senha => _senha;

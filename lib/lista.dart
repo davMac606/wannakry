@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, override_on_non_overriding_member, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:wannakry/user.dart';
 import 'package:wannakry/user_repository.dart';
 
@@ -88,19 +89,97 @@ class _ListaWannaState extends State<ListaWanna> {
                                       key: _formKey2,
                                       child: Column(children: [
                                         TextFormField(
-                                          controller: _nomeEdit,
-                                          validator: (value) {
-                                            if (value == null ||
-                                                value.isEmpty) {
-                                              return 'O nome não pode ser vazio.';
-                                            } else {
-                                              if (_nomeEdit.text.length < 5) {
-                                                return 'O nome deve ter mais de 5 caracteres.';
+                                            controller: _nomeEdit,
+                                            validator: (value) {
+                                              if (value == null ||
+                                                  value.isEmpty) {
+                                                return 'O nome não pode ser vazio.';
+                                              } else {
+                                               
                                               }
-                                            }
-                                            return null;
-                                          },
-                                        )
+                                              return null;
+                                            },
+                                            decoration: InputDecoration(
+                                              labelText: 'Nome',
+                                              hintText: 'Digite seu Nome',
+                                              border: OutlineInputBorder(),
+                                            )),
+                                        TextFormField(
+                                            controller: _emailEdit,
+                                            validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'O email não pode ser vazio.';
+                            } else {
+                              if (!value.contains('@')) {
+                                return 'O email deve conter @.';
+                              }
+                            }
+                            return null;
+                          },
+                          decoration: InputDecoration(
+                            labelText: 'E-mail',
+                            hintText: 'Digite seu e-mail',
+                            border: OutlineInputBorder(),
+                          )),
+                          TextFormField(
+                          controller: _usernameEdit,
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'O username não pode ser vazio.';
+                            } else {
+                              if (value.length < 3) {
+                                return 'O username deve ter mais de 3 caracteres.';
+                              }
+                            }
+                            return null;
+                          },
+                          decoration: InputDecoration(
+                            labelText: 'Nome de usuário',
+                            hintText: 'Digite seu nome de usuário',
+                            border: OutlineInputBorder(),
+                          )),
+                          TextFormField(
+                           controller: _idadeEdit,
+                          keyboardType: TextInputType.number,
+                          inputFormatters: <TextInputFormatter>[
+                            FilteringTextInputFormatter.digitsOnly
+                          ],
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'A idade não pode ser vazia.';
+                            } else {
+                              if (int.parse(_idadeEdit.text) < 18) {
+                                return 'A idade deve ser maior que 18 anos.';
+                              }
+                            }
+                            return null;
+                          },
+                          decoration: InputDecoration(
+                            labelText: 'Idade',
+                            hintText: 'Digite sua idade',
+                            border: OutlineInputBorder(),
+                          )),
+                           TextFormField(
+                          controller: _senhaEdit,
+                          obscureText: true,
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'A senha não pode ser vazia.';
+                            } else {
+                              if (value.length < 6) {
+                                return 'A senha deve ter mais de 6 caracteres.';
+                              }
+                            }
+                            return null;
+                          },
+                          decoration: InputDecoration(
+                            labelText: 'Senha',
+                            hintText: 'Crie uma senha',
+                            border: OutlineInputBorder(),
+                          )),
+                          ElevatedButton(onPressed: () {
+                            
+                          }, child: Text("Atualizar"))
                                       ]),
                                     ),
                                   );
