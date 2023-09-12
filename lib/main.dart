@@ -22,8 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      routes: 
-      {
+      routes: {
         '/HomePage': (context) => const HomePage(),
         '/Formulario': (context) => const Formulario(),
         '/FormExercise': (context) => const FormExercise(),

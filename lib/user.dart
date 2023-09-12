@@ -1,4 +1,3 @@
-
 // ignore_for_file: prefer_final_fields
 
 class User {
@@ -9,7 +8,8 @@ class User {
   int? _idade;
 
   User(this._username, this._senha);
-  User.usergeral(this._nome, this._username, this._senha, this._email, this._idade);
+  User.usergeral(
+      this._nome, this._username, this._senha, this._email, this._idade);
   get nome => _nome;
   get username => _username;
   get senha => _senha;

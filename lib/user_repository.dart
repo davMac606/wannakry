@@ -30,4 +30,8 @@ class UserRepository {
     }
     return false;
   }
+
+  static void removeUser(User user) {
+    _users.remove(user);
+}
 }

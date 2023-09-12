@@ -144,7 +144,8 @@ class _FormExerciseState extends State<FormExercise> {
                                 email = _email.text;
                                 idade = int.parse(_idade.text);
                                 senha = _senha.text;
-                                User user = User.usergeral(nome, username, senha, email, idade);
+                                User user = User.usergeral(
+                                    nome, username, senha, email, idade);
                                 userRepo.addUser(user);
                                 setState(() {
                                   _username.text = "";
