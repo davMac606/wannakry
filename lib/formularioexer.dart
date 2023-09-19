@@ -50,8 +50,7 @@ class _FormExerciseState extends State<FormExercise> {
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'O nome não pode ser vazio.';
-                            } else {                         
-                            }
+                            } else {}
                             return null;
                           },
                           decoration: InputDecoration(

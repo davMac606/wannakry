@@ -46,7 +46,6 @@ class _ListaWannaState extends State<ListaWanna> {
   }
 
   @override
-
   Widget build(BuildContext context) {
     return Scaffold(
         resizeToAvoidBottomInset: false,
@@ -68,7 +67,8 @@ class _ListaWannaState extends State<ListaWanna> {
                         Expanded(
                             child: IconButton(
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
                               return UserEdit(userRepo[index], index);
                             }));
                           },
