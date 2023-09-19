@@ -144,8 +144,7 @@ class _UserEditState extends State<UserEdit> {
             int idade = int.parse(_idadeEdit.text);
             String senha = _senhaEdit.text;
             User user = new User.userupdate(nome,email,username,idade,senha);
-            var y = [widget.index].join('');
-            int index = int.parse(y);
+            UserRepository.getUsers()[widget.index] = user;
           }
         }, child: Text("Atualizar"))
       ]),
