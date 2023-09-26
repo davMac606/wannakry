@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:wannakry/formulario.dart';
 import 'package:wannakry/formularioexer.dart';
 import 'package:flutter/material.dart';

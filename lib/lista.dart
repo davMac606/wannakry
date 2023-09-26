@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, override_on_non_overriding_member, prefer_const_literals_to_create_immutables, unused_import
+// ignore_for_file: prefer_const_constructors, override_on_non_overriding_member, prefer_const_literals_to_create_immutables, unused_import, annotate_overrides
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -14,7 +14,27 @@ class ListaWanna extends StatefulWidget {
 }
 
 class _ListaWannaState extends State<ListaWanna> {
+  List<User> users = UserRepository.getUsers();
+  List<User> search = [];
+  String username = "";
+
   final userRepo = UserRepository.getUsers();
+ void initState() {
+    //cópia da lista original
+    search = List.from(users);
+    super.initState();
+  }
+  void update(String nome) {
+   
+    search = List.from(users);
+    setState(() {
+      search = users
+          .where((element) =>
+              (element.nome.toLowerCase().contains(nome.toLowerCase())))
+          .toList();
+    });
+  }
+
   showAlertDialog(BuildContext context) {
     // set up the buttons
     Widget cancelButton = TextButton(
@@ -48,65 +68,81 @@ class _ListaWannaState extends State<ListaWanna> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomInset: false,
-        appBar: AppBar(title: Text('Consulta de usuários')),
-        body: ListView.separated(
-          padding: const EdgeInsets.all(8),
-          separatorBuilder: (BuildContext context, int index) =>
-              const Divider(thickness: 2),
-          itemCount: userRepo.length,
-          itemBuilder: (BuildContext context, int index) {
-            return ListTile(
-                leading: const Icon(Icons.person),
-                title: Text(userRepo[index].username),
-                subtitle: Text(userRepo[index].senha),
-                trailing: SizedBox(
-                    width: 70,
-                    child: Row(
-                      children: [
-                        Expanded(
-                            child: IconButton(
-                          onPressed: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) {
-                              return UserEdit(userRepo[index], index);
-                            }));
-                          },
-                          icon: Icon(Icons.mode_edit_outline_outlined),
-                        )),
-                        Expanded(
-                            child: IconButton(
-                                onPressed: () {
-                                  showDialog(
-                                      context: context,
-                                      builder: (context) {
-                                        return AlertDialog(
-                                          title: Text("Exclusão iminente"),
-                                          content: Text(
-                                              "Confirma a exclusão deste usuário?"),
-                                          actions: [
-                                            TextButton(
-                                                onPressed: () {
-                                                  User user = userRepo[index];
-                                                  UserRepository.removeUser(
-                                                      user);
-                                                  setState(() {});
-                                                  Navigator.pop(context);
-                                                },
-                                                child: Text("Sim")),
-                                            TextButton(
-                                                onPressed: () {
-                                                  Navigator.pop(context);
-                                                },
-                                                child: Text("Cancelar"))
-                                          ],
-                                        );
-                                      });
-                                },
-                                icon: Icon(Icons.delete_forever)))
-                      ],
-                    )));
-          },
-        ));
+      resizeToAvoidBottomInset: false,
+      appBar: AppBar(title: Text('Consulta de usuários')),
+      body: Column(
+        children: [
+          TextField(
+            decoration: const InputDecoration(
+                labelText: "Buscar usuário", border: OutlineInputBorder()),
+            onChanged: (String nome) {
+              username = nome;
+              update(username);
+            },
+          ),
+          SizedBox(height: 24),
+          ListView.separated(
+            shrinkWrap: true,
+            padding: const EdgeInsets.all(8),
+            separatorBuilder: (BuildContext context, int index) =>
+                const Divider(thickness: 2),
+            itemCount: search.length,
+            itemBuilder: (BuildContext context, int index) {
+              return ListTile(
+                  leading: const Icon(Icons.person),
+                  title: Text(search[index].username),
+                  subtitle: Text(search[index].senha),
+                  trailing: SizedBox(
+                      width: 70,
+                      child: Row(
+                        children: [
+                          Expanded(
+                              child: IconButton(
+                            onPressed: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return UserEdit(search[index], index);
+                              }));
+                            },
+                            icon: Icon(Icons.mode_edit_outline_outlined),
+                          )),
+                          Expanded(
+                              child: IconButton(
+                                  onPressed: () {
+                                    showDialog(
+                                        context: context,
+                                        builder: (context) {
+                                          return AlertDialog(
+                                            title: Text("Exclusão iminente"),
+                                            content: Text(
+                                                "Confirma a exclusão deste usuário?"),
+                                            actions: [
+                                              TextButton(
+                                                  onPressed: () {
+                                                    User user = userRepo[index];
+                                                    UserRepository.removeUser(
+                                                        user);
+                                                    update(username);
+                                                    setState(() {});
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: Text("Sim")),
+                                              TextButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: Text("Cancelar"))
+                                            ],
+                                          );
+                                        });
+                                  },
+                                  icon: Icon(Icons.delete_forever)))
+                        ],
+                      )));
+            },
+          ),
+        ],
+      ),
+    );
   }
 }

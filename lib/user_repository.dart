@@ -17,6 +17,8 @@ class UserRepository {
     }
   }
 
+  List<User> get getAll => _users;
+
   static List<User> getUsers() {
     return _users;
   }
@@ -43,3 +45,4 @@ class UserRepository {
     _users[index].senha = user.senha;
   }
 }
+final userCont = UserRepository();

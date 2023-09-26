@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_new, prefer_final_fields, unused_field, prefer_const_constructors, must_be_immutable, override_on_non_overriding_member
+// ignore_for_file: unnecessary_new, prefer_final_fields, unused_field, prefer_const_constructors, must_be_immutable, override_on_non_overriding_member, unused_import, annotate_overrides, prefer_interpolation_to_compose_strings
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
