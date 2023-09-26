@@ -24,13 +24,13 @@ class _ListaWannaState extends State<ListaWanna> {
     search = List.from(users);
     super.initState();
   }
-  void update(String nome) {
+  void update(String username) {
    
     search = List.from(users);
     setState(() {
       search = users
           .where((element) =>
-              (element.nome.toLowerCase().contains(nome.toLowerCase())))
+              (element.username.toLowerCase().contains(username.toLowerCase())))
           .toList();
     });
   }
@@ -123,6 +123,10 @@ class _ListaWannaState extends State<ListaWanna> {
                                                     UserRepository.removeUser(
                                                         user);
                                                     update(username);
+                                                    AlertDialog(
+                                                      title: Text("Alerta do sistema"),
+                                                      content: Text("Usuário excluído com sucesso!")
+                                                    );
                                                     setState(() {});
                                                     Navigator.pop(context);
                                                   },
