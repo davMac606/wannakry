@@ -28,6 +28,11 @@ class HomePage extends StatelessWidget {
                   Navigator.pushNamed(context, '/FormExercise');
                 },
                 child: Text('Formulário exercício')),
+                ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/Game');
+                },
+                child: Text('Game Controller')),
             ElevatedButton(
                 onPressed: () {
                   Navigator.pushNamed(context, '/Login');

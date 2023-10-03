@@ -17,7 +17,7 @@ class User {
   get senha => _senha;
   get email => _email;
   get idade => _idade;
-  set nome(value) => _nome;
+  set nome(value) => _nome = nome;
   set username(value) => _username = username;
   set senha(value) => _senha = senha;
   set email(value) => _email = email;
