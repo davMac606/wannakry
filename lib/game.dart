@@ -3,13 +3,14 @@
 import 'dart:math';
 
 class Game {
-  String? _name;
-  int? _rating;
-  String? _genre;
-  double? _price;
-  String? _releaseDate;
+  String _name;
+  String _rating;
+  String _genre;
+  double _price;
+  String _releaseDate;
+  String _id = genId();
 
-  String? _id() {
+  static String genId() {
     final random = new Random();
     String result = '';
     for (int i = 0; i <= 10; i++) {
@@ -20,11 +21,12 @@ class Game {
   }
 
   Game(this._name, this._rating, this._genre, this._price, this._releaseDate);
-  get name => _name;
-  get rating => _rating;
-  get genre => _genre;
-  get price => _price;
-  get releaseDate => _releaseDate;
+  String get name => _name;
+  String get rating => _rating;
+  String get genre => _genre;
+  double get price => _price;
+  String get releaseDate => _releaseDate;
+  String get id => _id;
 
   set name(value) => _name;
   set rating(value) => _rating = rating;

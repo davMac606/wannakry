@@ -23,21 +23,31 @@ class HomePage extends StatelessWidget {
                   Navigator.pushNamed(context, '/Formulario');
                 },
                 child: Text('Formulário')),
+                SizedBox(height: 10),
             ElevatedButton(
                 onPressed: () {
                   Navigator.pushNamed(context, '/FormExercise');
                 },
                 child: Text('Formulário exercício')),
+                SizedBox(height: 10),
                 ElevatedButton(
                 onPressed: () {
                   Navigator.pushNamed(context, '/Game');
                 },
-                child: Text('Game Controller')),
+                
+              
+                child: Text('Game Management')),
+                SizedBox(height: 10),
+                ElevatedButton(onPressed: () {
+                  Navigator.pushNamed(context, '/GameList');
+                }, child: Text('Check games')),
+                SizedBox(height: 10),
             ElevatedButton(
                 onPressed: () {
                   Navigator.pushNamed(context, '/Login');
                 },
                 child: Text('Login')),
+                SizedBox(height: 10),
             ElevatedButton(
                 onPressed: () {
                   Navigator.pushNamed(context, '/Consulta');

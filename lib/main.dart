@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:wannakry/cad_game.dart';
+import 'package:wannakry/con_game.dart';
 import 'package:wannakry/formulario.dart';
 import 'package:wannakry/formularioexer.dart';
 import 'package:flutter/material.dart';
@@ -30,11 +31,12 @@ class MyApp extends StatelessWidget {
         '/Formulario': (context) => const Formulario(),
         '/FormExercise': (context) => const FormExercise(),
         '/Game': (context) => const AddGame(),
+        '/GameList': (context) => const GameList(),
         '/Login': (context) => const Login(),
         '/TelaCadastro': (context) => const TelaCadastro(),
         '/Consulta': (context) => const ListaWanna(),
       },
-      home: const FormExercise(),
+      home: const HomePage(),
     );
   }
 }

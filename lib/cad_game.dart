@@ -23,7 +23,7 @@ class _AddGameState extends State<AddGame> {
   TextEditingController _price = TextEditingController();
   TextEditingController _releaseDate = TextEditingController();
   String name = "";
-  int rating = 0;
+  String rating = "";
   String genre = "";
   double price = 0;
   String releaseDate = "";
@@ -81,7 +81,7 @@ class _AddGameState extends State<AddGame> {
                     controller: _genre,
                     validator: (value) {
                       if (value!.isEmpty || value == "") {
-                        return 'Please, imput a genre.';
+                        return 'Please, input a genre.';
                       } else {
                         return null;
                       }
@@ -126,7 +126,7 @@ class _AddGameState extends State<AddGame> {
                             if (_formKey.currentState!.validate()) {
                               setState(() {
                                 name = _name.text;
-                                rating = int.parse(_rating.text);
+                                rating = _rating.text;
                                 genre = _genre.text;
                                 price = double.parse(_price.text);
                                 releaseDate = _releaseDate.text;
@@ -145,7 +145,12 @@ class _AddGameState extends State<AddGame> {
                                     SnackBar(
                                         content: Text(
                                             'Game added succesfully.')));
-                              });                             
+                              });
+                              Navigator.pushNamed(context, '/GameList',
+                                  arguments: <String, String>{
+                                    'name': _name.text,
+                                    'price': _price.text,
+                                  });                             
                             }
                           },
                           child: Text("Add"))
