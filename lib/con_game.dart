@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_interpolation_to_compose_strings, annotate_overrides
 
 import 'package:flutter/material.dart';
 import 'package:wannakry/chng_game.dart';
@@ -64,6 +64,7 @@ class _GameListState extends State<GameList> {
 
   @override
   Widget build(BuildContext context) {
+    //initState();
     return Scaffold(
       appBar: AppBar(title: Text("View games")),
       body: Column(children: [

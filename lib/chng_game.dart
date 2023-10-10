@@ -1,6 +1,7 @@
 // ignore_for_file: unused_field, prefer_final_fields, unnecessary_new, override_on_non_overriding_member, prefer_const_constructors, prefer_const_literals_to_create_immutables, body_might_complete_normally_nullable, unused_local_variable, prefer_interpolation_to_compose_strings
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:wannakry/game.dart';
 import 'package:wannakry/game_repository.dart';
 
@@ -15,6 +16,7 @@ class GameEdit extends StatefulWidget {
 }
 
 class _GameEditState extends State<GameEdit> {
+
   GameRepository gameRepo = new GameRepository();
   @override
   TextEditingController _nameEdit = new TextEditingController();
@@ -68,7 +70,7 @@ class _GameEditState extends State<GameEdit> {
                       controller: _ratingEdit,
                       validator: (value) {
                         if (value!.isEmpty) {
-                          return 'Please, input a rating.';
+                          return 'Please, input a rating from the following: E, T, M, RP';
                         } else if (_ratingEdit.text == "E") {
                           return null;
                         } else if (_ratingEdit.text == "T") {
@@ -83,7 +85,7 @@ class _GameEditState extends State<GameEdit> {
                       },
                       decoration: InputDecoration(
                         labelText: 'Rating',
-                        hintText: 'Input the game rating',
+                        hintText: 'Please, input a rating from the following: E, T, M, RP',
                         border: OutlineInputBorder(),
                       )),
                       TextFormField(
@@ -103,6 +105,10 @@ class _GameEditState extends State<GameEdit> {
                   ),
                   TextFormField(
                     controller: _priceEdit,
+                    keyboardType: TextInputType.number,
+                    inputFormatters: <TextInputFormatter>[
+                      FilteringTextInputFormatter.digitsOnly
+                    ],
                     validator: (value) {
                       if (value == "" || value!.isEmpty) {
                         return 'Please, input a price.';
@@ -139,7 +145,6 @@ class _GameEditState extends State<GameEdit> {
             String releaseDate = _releaseDateEdit.text;
             Game game = new Game(name,rating,genre,price,releaseDate);
             GameRepository.getGames()[widget.index] = game;
-            Navigator.pop(context);
           }
         }, child: Text("Update"))
 

@@ -21,6 +21,7 @@ class Game {
   }
 
   Game(this._name, this._rating, this._genre, this._price, this._releaseDate);
+  Game.gameupdate(this._name, this._rating, this._genre, this._price, this._releaseDate);
   String get name => _name;
   String get rating => _rating;
   String get genre => _genre;
