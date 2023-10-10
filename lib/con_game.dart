@@ -84,8 +84,8 @@ class _GameListState extends State<GameList> {
             itemBuilder: (BuildContext context, int index) {
               return ListTile(
                 leading: const Icon(Icons.gamepad),
-                title: Text(search[index].name + "\n" + search[index].id),
-                subtitle: Text(search[index].price.toString()),
+                title: Text(search[index].name + "\n" + search[index].price.toString()),
+                subtitle: Text(search[index].releaseDate),
                 trailing: SizedBox(
                   width: 70,
                   child: Row(

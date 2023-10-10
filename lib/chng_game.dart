@@ -1,4 +1,4 @@
-// ignore_for_file: unused_field, prefer_final_fields, unnecessary_new, override_on_non_overriding_member, prefer_const_constructors, prefer_const_literals_to_create_immutables, body_might_complete_normally_nullable, unused_local_variable, prefer_interpolation_to_compose_strings
+// ignore_for_file: unused_field, prefer_final_fields, unnecessary_new, override_on_non_overriding_member, prefer_const_constructors, prefer_const_literals_to_create_immutables, body_might_complete_normally_nullable, unused_local_variable, prefer_interpolation_to_compose_strings, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -105,10 +105,7 @@ class _GameEditState extends State<GameEdit> {
                   ),
                   TextFormField(
                     controller: _priceEdit,
-                    keyboardType: TextInputType.number,
-                    inputFormatters: <TextInputFormatter>[
-                      FilteringTextInputFormatter.digitsOnly
-                    ],
+
                     validator: (value) {
                       if (value == "" || value!.isEmpty) {
                         return 'Please, input a price.';
@@ -141,7 +138,7 @@ class _GameEditState extends State<GameEdit> {
             String name = _nameEdit.text;
             String rating = _ratingEdit.text;
             String genre = _genreEdit.text;
-            double price = double.parse(_priceEdit.text);
+            double price = double.parse(_priceEdit.text.trim());
             String releaseDate = _releaseDateEdit.text;
             Game game = new Game(name,rating,genre,price,releaseDate);
             GameRepository.getGames()[widget.index] = game;
