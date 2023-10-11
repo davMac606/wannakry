@@ -25,7 +25,7 @@ class _AddGameState extends State<AddGame> {
   String name = "";
   String rating = "";
   String genre = "";
-  double price = 0;
+  int price = 0;
   String releaseDate = "";
   String id = "";
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -125,10 +125,12 @@ class _AddGameState extends State<AddGame> {
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
                               setState(() {
+                                print(_price.text.trim().split(".")[0]);
+
                                 name = _name.text;
                                 rating = _rating.text;
                                 genre = _genre.text;
-                                price = double.parse(_price.text);
+                                price = int.parse(_price.text.trim());
                                 releaseDate = _releaseDate.text;
                                 Game game = Game(
                                     name, rating, genre, price, releaseDate);
@@ -146,7 +148,7 @@ class _AddGameState extends State<AddGame> {
                                         content: Text(
                                             'Game added succesfully.')));
                               });
-                              Navigator.pushNamed(context, '/GameList',
+                              Navigator.pushReplacementNamed(context, '/GameList',
                                   arguments: <String, String>{
                                     'name': _name.text,
                                     'price': _price.text,

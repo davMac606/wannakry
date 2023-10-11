@@ -6,7 +6,7 @@ class Game {
   String _name;
   String _rating;
   String _genre;
-  double _price;
+  int _price;
   String _releaseDate;
   /*String _id = genId();
 
@@ -24,7 +24,7 @@ class Game {
   String get name => _name;
   String get rating => _rating;
   String get genre => _genre;
-  double get price => _price;
+  int get price => _price;
   String get releaseDate => _releaseDate;
 
   set name(value) => _name;
