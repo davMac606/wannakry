@@ -66,12 +66,18 @@ class _GameListState extends State<GameList> {
   Widget build(BuildContext context) {
     //initState();
     return Scaffold(
-      
+      backgroundColor: Color.fromARGB(255, 100, 100, 100),
       appBar: AppBar(title: Text("View games")),
-      body: Column(children: [
+      body: Column(
+        
+        children: [
+          Image.network("https://cdn3.iconfinder.com/data/icons/object-emoji/50/VideoGameController-512.png", width: 200, height: 200,),
+          SizedBox(height: 20),
         TextField(
             decoration: const InputDecoration(
-                labelText: "Search game", border: OutlineInputBorder()),
+              filled: true,
+              fillColor: Color.fromARGB(255, 255, 255, 255),
+                labelText: "Search game", border: UnderlineInputBorder()),
             onChanged: (String gameName) {
               update(gameName);
             }),
@@ -139,6 +145,14 @@ class _GameListState extends State<GameList> {
                 ),
               );
             }),
+            ElevatedButton(onPressed: () {
+              showDialog(context: context, builder: (context) {
+                return AlertDialog(
+                title: Text("Sobre o projeto"),
+                content: Text("Tania bom dia ta feio perdao"),
+              );
+              });
+            }, child: Text("Sobre"))
       ]),
     );
   }

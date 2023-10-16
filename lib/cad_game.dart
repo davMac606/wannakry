@@ -33,17 +33,22 @@ class _AddGameState extends State<AddGame> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 100, 100, 100),
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
           title: Text('Add a new game'),
         ),
         body: Center(
-          child: Column(children: [
+          child: Column(
+            children: [
             Form(
                 key: _formKey,
-                child: Column(children: [
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
                   TextFormField(
                       controller: _name,
+                      
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return "Name can't be empty.";
@@ -51,6 +56,8 @@ class _AddGameState extends State<AddGame> {
                         return null;
                       },
                       decoration: InputDecoration(
+                        filled: true,
+                        fillColor:  Color.fromARGB(255, 255, 255, 255),
                         labelText: 'Name',
                         hintText: 'Input the name of the game',
                         border: OutlineInputBorder(),
@@ -73,6 +80,8 @@ class _AddGameState extends State<AddGame> {
                         }
                       },
                       decoration: InputDecoration(
+                        filled: true,
+                        fillColor:  Color.fromARGB(255, 255, 255, 255),
                         labelText: 'Rating',
                         hintText: 'Input the game rating',
                         border: OutlineInputBorder(),
@@ -87,6 +96,8 @@ class _AddGameState extends State<AddGame> {
                       }
                     },
                     decoration: InputDecoration(
+                      filled: true,
+                        fillColor:  Color.fromARGB(255, 255, 255, 255),
                         labelText: 'Genre',
                         hintText: 'Input the game genre. Ex: RPG, Adventure, Horror.',
                         border: OutlineInputBorder(),
@@ -103,6 +114,8 @@ class _AddGameState extends State<AddGame> {
                       }
                     },
                     decoration: InputDecoration(
+                      filled: true,
+                        fillColor:  Color.fromARGB(255, 255, 255, 255),
                         labelText: 'Price',
                         hintText: "Input the game's price",
                         border: OutlineInputBorder(),
@@ -116,6 +129,8 @@ class _AddGameState extends State<AddGame> {
                     }
                     },
                     decoration: InputDecoration(
+                      filled: true,
+                        fillColor:  Color.fromARGB(255, 255, 255, 255),
                         labelText: 'Release Date',
                         hintText: "Input the game's release year",
                         border: OutlineInputBorder(),
