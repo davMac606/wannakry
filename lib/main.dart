@@ -35,6 +35,7 @@ class MyApp extends StatelessWidget {
         '/Login': (context) => const Login(),
         '/TelaCadastro': (context) => const TelaCadastro(),
         '/Consulta': (context) => const ListaWanna(),
+        '/Tarefas': (context) => const HomePage(),
       },
       home: const HomePage(),
     );
