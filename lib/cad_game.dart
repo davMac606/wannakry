@@ -40,7 +40,10 @@ class _AddGameState extends State<AddGame> {
         ),
         body: Center(
           child: Column(
+            
             children: [
+              Image.network("https://helpdeskgeek.com/wp-content/pictures/2018/12/gamepad.png", width: 200, height: 200),
+            SizedBox(height: 20),
             Form(
                 key: _formKey,
                 child: Column(
