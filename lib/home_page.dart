@@ -44,6 +44,11 @@ class HomePage extends StatelessWidget {
                 }, child: Text('Check games')),
                 SizedBox(height: 10),
             ElevatedButton(
+              onPressed: () {
+                  Navigator.pushNamed(context, '/Tarefas');
+              }, child: Text('Chores')),
+            SizedBox(height: 10),
+            ElevatedButton(
                 onPressed: () {
                   Navigator.pushNamed(context, '/Login');
                 },
