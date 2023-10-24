@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 100, 100, 100),
+      backgroundColor: Color.fromARGB(255, 255, 255, 255),
         appBar: AppBar(
           title: Text('Página inicial'),
         ),
@@ -59,6 +59,9 @@ class HomePage extends StatelessWidget {
                   Navigator.pushNamed(context, '/Consulta');
                 },
                 child: Text('Consulta')),
+                ElevatedButton(onPressed: () {
+                  Navigator.pushNamed(context, '/ApiTest');
+                }, child: Text('ApiTest')),
           ]),
         ));
   }
