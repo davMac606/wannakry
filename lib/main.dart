@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:wannakry/cad_game.dart';
+import 'package:wannakry/chores_management.dart';
 import 'package:wannakry/con_game.dart';
 import 'package:wannakry/formulario.dart';
 import 'package:wannakry/formularioexer.dart';
