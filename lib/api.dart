@@ -34,64 +34,71 @@ class _ApiConfigState extends State<ApiConfig> {
     }
   }
 
-    Future<void> getTask() async {
-      final url = Uri.parse('https://jsonplaceholder.typicode.com/todos/19');
-      final response = await http.get(url);
+  Future<void> getTask() async {
+    final url = Uri.parse('https://jsonplaceholder.typicode.com/todos/19');
+    final response = await http.get(url);
 
-      if (response.statusCode == 200) {
-        final data = response.body;
-        Map<String, dynamic> task = jsonDecode(data);
-        myTask = Task.fromJson(task);
-        setState(() {});
-        userId = (task['userId']);
-        taskId = (task['id']);
-        title = (task['title']);
-        completed = (task['completed']);
-      } else {
-        print('Request failed with status: ${response.statusCode}.');
-      }
+    if (response.statusCode == 200) {
+      final data = response.body;
+      Map<String, dynamic> task = jsonDecode(data);
+      myTask = Task.fromJson(task);
+      setState(() {});
+      userId = (task['userId']);
+      taskId = (task['id']);
+      title = (task['title']);
+      completed = (task['completed']);
+    } else {
+      print('Request failed with status: ${response.statusCode}.');
     }
+  }
 
-    @override
-    Widget build(BuildContext context) {
-      return Scaffold(
-          appBar: AppBar(
-            title: Text('Api Testing'),
-          ),
-          body: Center(
-              child: Column(
-            children: [
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('Api Testing'),
+        ),
+        body: Center(
+          child: Column(children: [
+            Row(children: [
               ElevatedButton(
                   onPressed: () {
                     getTask();
                   },
-                  child: Text('Search all tasks')),
-              Text("User ID: ${myTask.userId}"),
-              Text('Task ID: ${myTask.taskId}'),
-              Text('Title: ${myTask.title}'),
-              Text('Completed: ${myTask.completed}'),
-              SizedBox(
-                height: 50,
-              ),
-              Expanded(
+                  child: Text('Search Task')),
+              ElevatedButton(
+                  onPressed: () {
+                    getAllTasks();
+                  },
+                  child: Text('Search all tasks'))
+            ]),
+            Text("User ID: ${myTask.userId}"),
+            Text('Task ID: ${myTask.taskId}'),
+            Text('Title: ${myTask.title}'),
+            Text('Completed: ${myTask.completed}'),
+            SizedBox(
+              height: 50,
+            ),
+            Expanded(
                 child: ListView.separated(
-                    shrinkWrap: true,
-                    
-                    separatorBuilder: (context, index) => Divider(thickness: 2,),
-                    itemCount: taskRepo.listTasks.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return ListTile(
-                        leading: Text('Task ID: ' + taskRepo.listTasks[index].taskId.toString()),
-                        title: Text(taskRepo.listTasks[index].title),
-                        subtitle: Text('User ID: ' + taskRepo.listTasks[index].userId.toString()),
-                        trailing: Text(taskRepo.listTasks[index].completed.toString())
-                      );
-                    },
-                    padding: EdgeInsets.all(17),)
-                    
-              )
-            ],
-          )));
-    }
+              shrinkWrap: true,
+              separatorBuilder: (context, index) => Divider(
+                thickness: 2,
+              ),
+              itemCount: taskRepo.listTasks.length,
+              itemBuilder: (BuildContext context, int index) {
+                return ListTile(
+                    leading: Text('Task ID: ' +
+                        taskRepo.listTasks[index].taskId.toString()),
+                    title: Text(taskRepo.listTasks[index].title),
+                    subtitle: Text('User ID: ' +
+                        taskRepo.listTasks[index].userId.toString()),
+                    trailing:
+                        Text(taskRepo.listTasks[index].completed.toString()));
+              },
+              padding: EdgeInsets.all(17),
+            )),
+          ]),
+        ));
   }
-
+}
