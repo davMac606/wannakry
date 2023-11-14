@@ -143,6 +143,7 @@ class _GameEditState extends State<GameEdit> {
                             GameRepository.getGames()[widget.index] = game;
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                 content: Text('Game updated succesfully.')));
+                            Navigator.pop(context);
                             Navigator.pushReplacementNamed(
                                 context, "/GameList");
                           }
