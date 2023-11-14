@@ -1,4 +1,4 @@
-// ignore_for_file: unused_local_variable, avoid_print, prefer_const_constructors, unused_element
+// ignore_for_file: unused_local_variable, avoid_print, prefer_const_constructors, unused_element, prefer_interpolation_to_compose_strings
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;

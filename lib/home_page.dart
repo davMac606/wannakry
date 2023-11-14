@@ -59,6 +59,7 @@ class HomePage extends StatelessWidget {
                   Navigator.pushNamed(context, '/Consulta');
                 },
                 child: Text('Consulta')),
+                SizedBox(height: 10),
                 ElevatedButton(onPressed: () {
                   Navigator.pushNamed(context, '/ApiTest');
                 }, child: Text('ApiTest')),

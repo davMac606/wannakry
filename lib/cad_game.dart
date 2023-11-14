@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_new, unused_local_variable, no_leading_underscores_for_local_identifiers, prefer_final_fields, unused_field, prefer_const_constructors, prefer_const_literals_to_create_immutables, body_might_complete_normally_nullable, unused_import
+// ignore_for_file: unnecessary_new, unused_local_variable, no_leading_underscores_for_local_identifiers, prefer_final_fields, unused_field, prefer_const_constructors, prefer_const_literals_to_create_immutables, body_might_complete_normally_nullable, unused_import, unnecessary_import, avoid_print
 
 import 'dart:ffi';
 
@@ -60,7 +60,7 @@ class _AddGameState extends State<AddGame> {
                       },
                       decoration: InputDecoration(
                         filled: true,
-                        fillColor:  Color.fromARGB(255, 255, 255, 255),
+                        fillColor:  Color.fromARGB(150, 255, 255, 255),
                         labelText: 'Name',
                         hintText: 'Input the name of the game',
                         border: OutlineInputBorder(),
@@ -84,7 +84,7 @@ class _AddGameState extends State<AddGame> {
                       },
                       decoration: InputDecoration(
                         filled: true,
-                        fillColor:  Color.fromARGB(255, 255, 255, 255),
+                        fillColor:  Color.fromARGB(150, 255, 255, 255),
                         labelText: 'Rating',
                         hintText: 'Input the game rating',
                         border: OutlineInputBorder(),
@@ -100,7 +100,7 @@ class _AddGameState extends State<AddGame> {
                     },
                     decoration: InputDecoration(
                       filled: true,
-                        fillColor:  Color.fromARGB(255, 255, 255, 255),
+                        fillColor:  Color.fromARGB(150, 255, 255, 255),
                         labelText: 'Genre',
                         hintText: 'Input the game genre. Ex: RPG, Adventure, Horror.',
                         border: OutlineInputBorder(),
@@ -118,7 +118,7 @@ class _AddGameState extends State<AddGame> {
                     },
                     decoration: InputDecoration(
                       filled: true,
-                        fillColor:  Color.fromARGB(255, 255, 255, 255),
+                        fillColor:  Color.fromARGB(150, 255, 255, 255),
                         labelText: 'Price',
                         hintText: "Input the game's price",
                         border: OutlineInputBorder(),
@@ -133,13 +133,14 @@ class _AddGameState extends State<AddGame> {
                     },
                     decoration: InputDecoration(
                       filled: true,
-                        fillColor:  Color.fromARGB(255, 255, 255, 255),
+                        fillColor:  Color.fromARGB(150, 255, 255, 255),
                         labelText: 'Release Date',
                         hintText: "Input the game's release year",
                         border: OutlineInputBorder(),
                       )
                   ),
                   ElevatedButton(
+                    
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
                               setState(() {

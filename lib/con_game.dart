@@ -66,7 +66,7 @@ class _GameListState extends State<GameList> {
   Widget build(BuildContext context) {
     //initState();
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 100, 100, 100),
+      backgroundColor: Color.fromARGB(155, 100, 100, 100),
       appBar: AppBar(title: Text("View games")),
       body: Column(
         
@@ -76,13 +76,14 @@ class _GameListState extends State<GameList> {
         TextField(
             decoration: const InputDecoration(
               filled: true,
-              fillColor: Color.fromARGB(255, 255, 255, 255),
+              fillColor: Color.fromARGB(150, 255, 255, 255),
                 labelText: "Search game", border: UnderlineInputBorder()),
             onChanged: (String gameName) {
               update(gameName);
             }),
         SizedBox(height: 24),
         ListView.separated(
+          
             shrinkWrap: true,
             padding: const EdgeInsets.all(8),
             separatorBuilder: (BuildContext context, int index) =>
@@ -90,6 +91,7 @@ class _GameListState extends State<GameList> {
             itemCount: search.length,
             itemBuilder: (BuildContext context, int index) {
               return ListTile(
+                
                 leading: const Icon(Icons.gamepad),
                 title: Text(search[index].name + "\n" + "R\$" + search[index].price.toString()),
                 subtitle: Text(search[index].releaseDate),
